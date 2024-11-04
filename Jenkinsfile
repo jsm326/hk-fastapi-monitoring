@@ -16,5 +16,10 @@ pipeline {
 				sh "docker compose up -d"
 			}
 		}
-	}
+        stage("Update Model"){
+            step {
+                sh "docker exec -i hk-fastapi-monitoring python train.py"
+            }
+        }
+    }
 }
